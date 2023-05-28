@@ -1,0 +1,456 @@
+/* This is the style sheet for an animation of a rocket and stars in a background */
+
+/* The background class applies styles to the background image */
+
+#background-hh {
+  position: relative;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  animation: 12s infiniteScroll linear infinite;
+  background-image: url("test background.png");
+}
+
+/* The holder class applies styles to the container for the rocket and flames */
+
+#holder {
+  height: 600px;
+  position: relative;
+  overflow: hidden;
+  background: #222222;
+}
+
+/* The infiniteScroll keyframe animation scrolls the background image vertically */
+
+@keyframes infiniteScroll {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, -1692px, 0);
+    transform: translate3d(0, -1692px, 0);
+  }
+}
+
+/* The rocket class applies styles to the rocket image */
+
+#rocket {
+  background: url("../../assets/img/rocket-297573.png") center / contain no-repeat;
+  height: 158px;
+  width: 158px;
+  align-self: center;
+  transform: translateY(0px);
+}
+
+/* The flames class applies styles to the flames image */
+
+#flames {
+  align-self: center;
+  animation: exhaust 1s linear infinite;
+  height: 150px;
+  width: 30px;
+  background: linear-gradient(#801100, #fc6400, #fa9600, transparent);
+  filter: blur(15px) saturate(200%);
+}
+
+/* The transition class positions the rocket and flames at the bottom of the holder */
+
+.transition {
+  position: absolute;
+  bottom: -160px;
+}
+
+/* The exhaust keyframe animation increases and decreases the height of the flames */
+
+@keyframes exhaust {
+  50% {
+    height: 135px;
+  }
+}
+
+/* The rocketDiv class positions the rocket and flames at the center of the holder */
+
+#rocketDiv {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  align-self: center;
+  text-align: center;
+  bottom: -151px;
+}
+
+/* The star class applies styles to the star images */
+
+.star li {
+  list-style: none;
+  position: absolute;
+}
+
+/* The :before and :after pseudo-elements apply styles to the star shapes */
+
+.star li:before, .star li:after {
+  content: '';
+  position: absolute;
+  background-color: white;
+}
+
+.star li:before {
+  width: 10px;
+  height: 2px;
+  border-radius: 50%;
+}
+
+.star li:after {
+  height: 8px;
+  width: 2px;
+  left: 4px;
+  top: -3px;
+}
+
+.star li:first-child {
+  top: 50%;
+  left: 50%;
+  animation: twinkle 0.4s infinite;
+}
+
+/* The li:nth-child(n) selector targets the nth list item in the .star class */
+
+.star li:nth-child(2) {
+  top: 20%;
+  left: calc(50% - 60px);
+  animation: twinkle 0.5s infinite;
+}
+
+/* The :before and :after pseudo-elements for the second list item have different styles */
+
+.star li :nth-child(2) :before {
+  height: 1px;
+  width: 5px;
+}
+
+.star li :nth-child(2):after {
+  width: 1px;
+  height: 5px;
+  top: -2px;
+  left: 2px;
+}
+
+/* The remaining list items are styled individually */
+
+.star li:nth-child(3) {
+  left: 125px;
+  top: 220px;
+  animation: twinkle 1s infinite;
+}
+
+.star li:nth-child(4) {
+  left: 77%;
+  top: 200px;
+  animation: twinkle 0.5s ease infinite;
+}
+
+.star li:nth-child(5) {
+  left: 175px;
+  top: 100px;
+  animation: twinkle 0.4s ease infinite;
+}
+
+.star li:nth-child(6) {
+  top: 90px;
+  left: 70%;
+  animation: twinkle 0.2s infinite;
+}
+
+/* The :before and :after pseudo-elements for the sixth list item have different styles */
+
+.star li:nth-child(6):before {
+  height: 1px;
+  width: 5px;
+}
+
+.star li:nth-child(6):after {
+  width: 1px;
+  height: 3px;
+  top: -1px;
+  left: 1px;
+}
+
+/* The twinkle keyframe animation increases and decreases the size of the stars */
+
+@keyframes twinkle {
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+/* Styles for the 7th, 8th, and 9th list items within the .star class */
+
+.star li:nth-child(7) {
+  top: 55%;
+  left: 26%;
+  animation: twinkle 0.4s ease infinite;
+}
+
+.star li:nth-child(8) {
+  top: 63%;
+  left: 88%;
+  animation: twinkle 0.3s ease infinite;
+}
+
+.star li:nth-child(9) {
+  top: 38%;
+  left: 61%;
+  animation: twinkle 0.5s ease infinite;
+}
+
+/* Styles for the .list-group-item class when screen width is less than or equal to 780px */
+
+@media (max-width: 780px) {
+  .list-group-item {
+    flex-direction: column !important;
+    height: auto !important;
+    max-height: 400px;
+    width: 300px;
+    margin: 16px auto !important;
+  }
+}
+
+/* Styles for the .list-group-item class */
+
+.list-group-item {
+  cursor: pointer;
+  overflow: hidden;
+  height: 225px;
+  display: flex;
+  box-shadow: 0 0rem 2rem rgba(0,0,0,.1);
+  border-style: none;
+  margin: 16px 36px;
+  transition-duration: 0.2s;
+  /*align-items: center;*/
+  border-radius: 1rem !important;
+  direction: rtl;
+}
+
+/* Styles for the .item-content class */
+
+.item-content {
+  text-align: right;
+  width: 100%;
+  color: black !important;
+  margin: auto 8px;
+  font-family: Cairo, sans-serif;
+}
+
+/* Styles for the .item-img class */
+
+.item-img {
+  width: 225px;
+  height: 150px;
+  border-radius: .25rem !important;
+  margin: auto 8px;
+  margin-left: 16px;
+}
+
+/* Styles for the #main-heading id */
+
+#main-heading {
+  font-family: Montserrat, sans-serif;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+
+/* Styles for the h1 element */
+
+h1 {
+  font-family: 'Source Sans Pro';
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+/* Styles for the .list-group-item class when in a hover state */
+
+.list-group-item:hover {
+  box-shadow: 0rem 2rem 5rem rgba(0,0,0,.275) !important;
+  transition-duration: 0.3s;
+}
+
+/* Styles for the #catagory-list-group id when screen width is less than or equal to 600px */
+
+@media (max-width: 600px) {
+  #catagory-list-group {
+    justify-content: center;
+  }
+}
+
+/* Styles for the li element that is a sibling of another li element within the #breadcrumb id */
+
+#breadcrumb li + li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+
+/* Styles for the #read_time id */
+
+#read_time::before {
+  content: "·";
+  margin: 0 10px 0px;
+}
+
+/* Styles for the article element when screen width is between 780px and 1200px */
+
+@media (min-width: 1200px) {
+  article {
+    max-width: 850px;
+  }
+}
+
+/* Styles for the .item-img class when screen width is less than or equal to 780px */
+
+@media (max-width: 780px) {
+  .item-img {
+    align-self: center;
+    margin: 8px 16px;
+  }
+}
+
+/* Styles for the .item-content class when screen width is less than or equal to 780px */
+
+@media (max-width: 780px) {
+  .item-content {
+    text-align: center;
+  }
+}
+
+/* Styles for the .date class */
+
+.date {
+  color: rgba(0,0,0,0.61);
+  font-weight: 500;
+  margin: 16px 0 !important;
+}
+
+/* Styles for the progress element */
+
+progress {
+  display: block;
+  --_track-size: min(3px, 1ex);
+  --_radius: 1e3px;
+  appearance: none;
+  border: none;
+  /*padding: 0 16px;*/
+  /*margin: 0 16px;*/
+  align-self: center;
+  width: 100%;
+  position: relative;
+  height: var(--_track-size);
+  border-radius: var(--_radius);
+  overflow: hidden;
+  color-scheme: light dark;
+  accent-color: rebeccapurple;
+  --_track: hsl(228 100% 90%);
+  --_progress: hsl(228 100% 50%);
+  --_indicator: currentColor;
+  background: var(--_track);
+}
+
+/* Style the appearance of a progress element that does not have the max attribute set 
+and has a value of "1" */
+
+progress:not([max])[value="1"]::before, progress[max="100"][value="100"]::before {
+  content: "✓";
+  position: absolute;
+  inset-block: 0;
+  inset-inline: auto 0;
+  display: flex;
+  align-items: center;
+  padding-inline-end: max(calc(var(--_track-size) / 4), 3px);
+  color: white;
+  font-size: calc(var(--_track-size) / 1.25);
+}
+
+/* Style the appearance of a progress element when it is in focus and has the 
+:focus-visible pseudo-class applied to it */
+
+progress:focus-visible {
+  outline-color: var(--_progress);
+  outline-offset: 5px;
+}
+
+/* Style the progress bar of a progress element that has a value attribute set */
+
+progress[value]::-webkit-progress-value {
+  background-color: var(--_progress);
+  transition: inline-size .25s ease-out;
+}
+
+/* Style progress elements in Firefox */
+
+progress[value]::-moz-progress-bar {
+  background-color: var(--_progress);
+}
+
+/* Style progress elements in Safari/Chromium */
+
+progress[value]::-webkit-progress-bar {
+  background-color: var(--_track);
+}
+
+/* Define an animation that moves an element's background position from right to left 
+and back again */
+
+@keyframes progress-loading {
+  50% {
+    background-position: left;
+  }
+}
+
+/* Style the appearance of an indeterminate progress element */
+
+progress:indeterminate::after {
+  content: "";
+  inset: 0;
+  position: absolute;
+  background: var(--_indeterminate-track);
+  background-size: var(--_indeterminate-track-size);
+  background-position: right;
+  animation: var(--_indeterminate-track-animation);
+}
+
+/* Style the appearance of an indeterminate progress element in Safari/Chromium */
+
+progress:indeterminate::-webkit-progress-bar {
+  background: var(--_indeterminate-track);
+  background-size: var(--_indeterminate-track-size);
+  background-position: right;
+  animation: var(--_indeterminate-track-animation);
+}
+
+/* Style the appearance of an indeterminate progress element in Firefox */
+
+progress:indeterminate::-moz-progress-bar {
+  background: var(--_indeterminate-track);
+  background-size: var(--_indeterminate-track-size);
+  background-position: right;
+  animation: var(--_indeterminate-track-animation);
+}
+
+/* Add padding and set a maximum width for an element with the "container" class */
+
+.container {
+  padding: 8px;
+  max-width: 1100px;
+}
+
+/* Allow line breaks at any point for <a> elements */
+
+a {
+  line-break: anywhere;
+}
+
